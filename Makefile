@@ -1,8 +1,7 @@
 # to fix: compile manually the mupdf libs first...
 # cd mupdf; make
 
-PSP_FW_VERSION = 150
-#PSP_FW_VERSION = 371 
+#PSP_FW_VERSION = 661
 #BUILD_PRX = 1 
 PSP_EBOOT_ICON=data/icon0.png
 TARGET=bookr
