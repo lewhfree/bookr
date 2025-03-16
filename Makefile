@@ -8,7 +8,7 @@ TARGET=bookr
 OBJS:=bkpdf.o bklayer.o bkdocument.o bkmainmenu.o bkfilechooser.o bkpagechooser.o bkcolorschememanager.o bklogo.o bkuser.o bookr.o bkbookmark.o bkpopup.o bkcolorchooser.o bkdjvu.o 
 OBJS+=bkfancytext.o bkplaintext.o bkpalmdoc.o palmdoc/palm.o
 OBJS+=fzrefcount.o fzinstreammem.o fzinstreamstd.o fzimage.o fzimagepng.o fztexture.o fzfont.o fzscreenpsp.o fzscreencommon.o
-OBJS+=tinystr.o tinyxmlerror.o tinyxml.o tinyxmlparser.o bkmemcpy.S
+OBJS+=tinystr.o tinyxmlerror.o tinyxml.o tinyxmlparser.o bkmemcpy.o
 OBJS+=res_uifont.o res_txtfont.o res_uitex.o res_logo.o res_uitex2.o 
 
 INCDIR =
@@ -26,6 +26,9 @@ PSP_EBOOT_TITLE = Bookr - Book Reader
 PSPSDK=$(shell psp-config --pspsdk-path)
 #USE_PSPSDK_LIBC=1
 include $(PSPSDK)/lib/build.mak
+
+bkmemcpy.o: bkmemcpy.S
+	psp-gcc -c $< -o $@
 
 res_uifont.c: data/urwgothicb.pfb
 	bin2c $< temp res_uifont
