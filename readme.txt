@@ -14,6 +14,14 @@ You need a Sony PSP with firmware version 1.5. Other firmware versions are not
 supported. To install simply copy the __SCE__bookr and %__SCE__bookr folders
 to your Memory Stick \PSP\GAME folder.
 
+Building
+========
+This assumes you have just followed these instructions:
+https://pspdev.github.io/installation/ubuntu.html
+1) Run psp-pacman -Sy
+2) Run psp-pacman -S pspdev-default
+3) git clone https://github.com/aseprite/freetype2.git
+4) cp -r freetype2/include/freetype/internal $(psp-config --pspdev-path)/include/freetype2
 
 Optional CJK PDF Support
 ========================

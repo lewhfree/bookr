@@ -7,7 +7,7 @@ OBJS+=pdf_build.o pdf_interpret.o pdf_page.o pdf_pagetree.o pdf_resources.o pdf_
 
 INCDIR=../include
 CFLAGS=-G0 -Wall -O2 -I$(shell psp-config --pspdev-path)/psp/include/freetype2
-CXXFLAGS=$(CFLAGS) -fno-exceptions -fno-rtti -I$(shell psp-config --pspdev-path)/psp/include/freetype2
+CXXFLAGS=$(CFLAGS) -fno-exceptions -fno-rtti
 ASFLAGS=$(CFLAGS)
 
 LIBDIR=
