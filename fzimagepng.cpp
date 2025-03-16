@@ -20,7 +20,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <png.h>
-
+//It was complaining about memcpy
+#include <cstring>
 #ifdef MAC
 static void* memalign(int t, int s) {
 	return malloc(s);
