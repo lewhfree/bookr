@@ -461,24 +461,24 @@ GP<TYPE>::operator! () const
 class GPBufferBase
 {
 public:
-  GPBufferBase(void *&,const size_t n,const size_t t);
+  GPBufferBase(void *&,const std::size_t n,const std::size_t t);
   void swap(GPBufferBase &p);
-  void resize(const size_t n,const size_t t);
-  void replace(void *nptr,const size_t n);
-  void set(const size_t t,const char c);
+  void resize(const std::size_t n,const std::size_t t);
+  void replace(void *nptr,const std::size_t n);
+  void set(const std::size_t t,const char c);
   ~GPBufferBase();
   operator int(void) const { return ptr ? num : 0; }
 private:
   void *&ptr;
-  size_t num;
+  std::size_t num;
 };
 
 template<class TYPE>
 class GPBuffer : public GPBufferBase
 {
 public:
-  GPBuffer(TYPE *&xptr,const size_t n=0) : GPBufferBase((void *&)xptr,n,sizeof(TYPE)) {}
-  inline void resize(const size_t n) {GPBufferBase::resize(n,sizeof(TYPE));}
+  GPBuffer(TYPE *&xptr,const std::size_t n=0) : GPBufferBase((void *&)xptr,n,sizeof(TYPE)) {}
+  inline void resize(const std::size_t n) {GPBufferBase::resize(n,sizeof(TYPE));}
   inline void clear(void) {GPBufferBase::set(sizeof(TYPE),0);}
   inline void set(const char c) {GPBufferBase::set(sizeof(TYPE),c);}
   inline operator int(void) const {return GPBufferBase::operator int();}
