@@ -405,7 +405,7 @@ public:
       re-initialization of the GBitmap object.  This function will return a
       null pointer if the GBitmap object does not ``own'' the buffer in the
       first place.  */
-  unsigned char *take_data(size_t &offset);
+  unsigned char *take_data(std::size_t &offset);
   /** Initializes this GBitmap by borrowing a memory segment.  The GBitmap
       then directly addresses the memory buffer #data# provided by the user.
       This buffer must be large enough to hold #w*h# bytes representing each

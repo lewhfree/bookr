@@ -397,7 +397,7 @@ public:
       re-initialization of the GPixmap object.  This function will return a
       null pointer if the GPixmap object does not ``own'' the buffer in the
       first place.  */
-  GPixel *take_data(size_t &offset);
+  GPixel *take_data(std::size_t &offset);
   /** Initializes this GPixmap by borrowing a memory segment.  The GPixmap
       then directly addresses the memory buffer #data# provided by the user.
       This buffer must be large enough to hold #w*h# GPixels.  The GPixmap
