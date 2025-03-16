@@ -1,7 +1,0 @@
-psp-pacman -Sy
-psp-pacman -S pspdev-default
-
-cd $(psp-config --pspdev-path)/psp/include
-
-wget https://raw.githubusercontent.com/ubawurinna/freetype-windows-binaries/refs/heads/master/include/ft2build.h
-
