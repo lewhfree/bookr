@@ -419,10 +419,10 @@ int FZScreen::getSpeed() {
 }
 
 void FZScreen::getTime(int &h, int &m) {
-	pspTime time;
-	if (sceRtcGetCurrentClockLocalTime(&time) >= 0) {
-		h = time.hour;
-		m = time.minutes;
+	ScePspDateTime pspTime;
+	if (sceRtcGetCurrentClockLocalTime(&pspTime) >= 0) {
+		h = pspTime.hour;
+		m = pspTime.minute;
 	}
 }
 
