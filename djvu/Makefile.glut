@@ -1,7 +1,0 @@
-all:
-	@(cd libdjvupsp; make -f Makefile.glut; cp libdjvulibre.a ../libs)
-
-
-clean:
-	@(cd libdjvupsp; make -f Makefile.glut clean)
-	@(cd libs; rm *.a)
