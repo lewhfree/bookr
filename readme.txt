@@ -10,9 +10,9 @@ Public License v2. At the moment it supports plain text and PDF files.
 
 Install
 =======
-You need a Sony PSP with firmware version 1.5. Other firmware versions are not
-supported. To install simply copy the __SCE__bookr and %__SCE__bookr folders
-to your Memory Stick \PSP\GAME folder.
+Unzip the bookrpsp.zip found in the release tab.
+Place the bookrpsp folder in /PSP/GAME/
+Profit!
 
 Building
 ========
