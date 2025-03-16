@@ -5,7 +5,7 @@
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
-#include <freetype2/internal/ftobjs.h>
+#include <freetype/internal/ftobjs.h>
 
 static char *basefontnames[14][7] =
 {
