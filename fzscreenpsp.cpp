@@ -26,6 +26,7 @@
 #include <psppower.h>
 #include <psprtc.h>
 #include <malloc.h>
+#include <cstring>
 
 #include "fzscreen.h"
 #include "fztexture.h"
