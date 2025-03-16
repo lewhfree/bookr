@@ -20,8 +20,12 @@ This assumes you have just followed these instructions:
 https://pspdev.github.io/installation/ubuntu.html
 1) Run psp-pacman -Sy
 2) Run psp-pacman -S pspdev-default
-3) git clone https://github.com/aseprite/freetype2.git
-4) cp -r freetype2/include/freetype/internal $(psp-config --pspdev-path)/include/freetype2
+3) cd bookr/mupdf
+4) make
+5) cd ../djvu
+6) make
+7) cd ..
+8) make
 
 Optional CJK PDF Support
 ========================
