@@ -12,6 +12,7 @@ OBJS+=tinystr.o tinyxmlerror.o tinyxml.o tinyxmlparser.o bkmemcpy.o
 OBJS+=res_uifont.o res_txtfont.o res_uitex.o res_logo.o res_uitex2.o 
 
 INCDIR =
+EXTRACFLAGS1 = -Oz -ffast-math -s -falign-functions=32 -fomit-frame-pointer -mno-abicalls -fno-pic -fno-stack-protector
 CFLAGS = -Imupdf/include -Idjvu/libdjvupsp -G0 -Wall -O2 -I$(shell psp-config --pspdev-path)/psp/include/freetype2
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
 ASFLAGS = $(CFLAGS)
