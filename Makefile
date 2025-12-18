@@ -60,30 +60,38 @@ PSPSDK=$(shell psp-config --pspsdk-path)
 #USE_PSPSDK_LIBC=1
 include $(PSPSDK)/lib/build.mak
 
-bkmemcpy.o: bkmemcpy.S
+EXTRA_TARGETS= \
+	$(SOURCE_DIR)/bkmemcpy.o \
+	$(SOURCE_DIR)/res_uifont.c \
+	$(SOURCE_DIR)/res_txtfont.c \
+	$(SOURCE_DIR)/res_uitex.c \
+	$(SOURCE_DIR)/res_uitex2.c \
+	$(SOURCE_DIR)/res_logo.c
+
+$(SOURCE_DIR)/bkmemcpy.o: $(SOURCE_DIR)/bkmemcpy.S
 	psp-gcc -c $< -o $@
 
-res_uifont.c: data/urwgothicb.pfb
+$(SOURCE_DIR)/res_uifont.c: data/urwgothicb.pfb
 	bin2c $< temp res_uifont
 	sed s/static// temp > $@
 	rm -f temp
 
-res_txtfont.c: data/vera.ttf
+$(SOURCE_DIR)/res_txtfont.c: data/vera.ttf
 	bin2c $< temp res_txtfont
 	sed s/static// temp > $@
 	rm -f temp
 
-res_uitex.c: data/ui.png
+$(SOURCE_DIR)/res_uitex.c: data/ui.png
 	bin2c $< temp res_uitex
 	sed s/static// temp > $@
 	rm -f temp
 
-res_uitex2.c: data/ui2.png
+$(SOURCE_DIR)/res_uitex2.c: data/ui2.png
 	bin2c $< temp res_uitex2
 	sed s/static// temp > $@
 	rm -f temp
 
-res_logo.c: data/logo.png
+$(SOURCE_DIR)/res_logo.c: data/logo.png
 	bin2c $< temp res_logo
 	sed s/static// temp > $@
 	rm -f temp
