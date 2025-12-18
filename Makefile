@@ -21,8 +21,6 @@ $(SOURCE_DIR)/bkcolorchooser.o \
 $(SOURCE_DIR)/bkdjvu.o \
 $(SOURCE_DIR)/bkfancytext.o \
 $(SOURCE_DIR)/bkplaintext.o \
-$(SOURCE_DIR)/bkpalmdoc.o \
-palmdoc/palm.o \
 $(SOURCE_DIR)/fzrefcount.o \
 $(SOURCE_DIR)/fzinstreammem.o \
 $(SOURCE_DIR)/fzinstreamstd.o \

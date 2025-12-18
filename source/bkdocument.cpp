@@ -20,7 +20,6 @@
 #include "bkdocument.h"
 #include "bkpdf.h"
 #include "bkdjvu.h"
-#include "bkpalmdoc.h"
 #include "bkplaintext.h"
 
 BKDocument* BKDocument::create(string& filePath) {
@@ -29,8 +28,6 @@ BKDocument* BKDocument::create(string& filePath) {
 		doc = BKPDF::create(filePath);
 	} else if (BKDJVU::isDJVU(filePath)) {
 		doc = BKDJVU::create(filePath);
-	} else if (BKPalmDoc::isPalmDoc(filePath)) {
-		doc = BKPalmDoc::create(filePath);
 	} else {
 		doc = BKPlainText::create(filePath);
 	}
@@ -376,14 +373,14 @@ void BKDocument::buildToolbarMenus() {
 	if (isRotable()) {
 		ToolbarItem i;
 		i.circleLabel = "Select";
-		i.label = "Rotate 90° clockwise";
+		i.label = "Rotate 90ï¿½ clockwise";
 		i.iconX = 39;
 		i.iconY = 79;
 		i.iconW = 17;
 		i.iconH = 26;
 		toolbarMenus[3].push_back(i);
 
-		i.label = "Rotate 90° counterclockwise";
+		i.label = "Rotate 90ï¿½ counterclockwise";
 		i.iconX = 57;
 		i.iconY = 79;
 		i.iconW = 17;
