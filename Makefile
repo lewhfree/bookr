@@ -2,18 +2,52 @@
 # cd mupdf; make
 
 #PSP_FW_VERSION = 661
-#BUILD_PRX = 1 
+#BUILD_PRX = 1
+
 PSP_EBOOT_ICON=data/icon0.png
 TARGET=bookr
-OBJS:=bkpdf.o bklayer.o bkdocument.o bkmainmenu.o bkfilechooser.o bkpagechooser.o bkcolorschememanager.o bklogo.o bkuser.o bookr.o bkbookmark.o bkpopup.o bkcolorchooser.o bkdjvu.o 
-OBJS+=bkfancytext.o bkplaintext.o bkpalmdoc.o palmdoc/palm.o
-OBJS+=fzrefcount.o fzinstreammem.o fzinstreamstd.o fzimage.o fzimagepng.o fztexture.o fzfont.o fzscreenpsp.o fzscreencommon.o
-OBJS+=tinystr.o tinyxmlerror.o tinyxml.o tinyxmlparser.o bkmemcpy.o
-OBJS+=res_uifont.o res_txtfont.o res_uitex.o res_logo.o res_uitex2.o 
+
+OBJS:= \
+bkpdf.o \
+bklayer.o \
+bkdocument.o \
+bkmainmenu.o \
+bkfilechooser.o \
+bkpagechooser.o \
+bkcolorschememanager.o\
+bklogo.o \
+bkuser.o \
+bookr.o \
+bkbookmark.o \
+bkpopup.o \
+bkcolorchooser.o \
+bkdjvu.o \
+bkfancytext.o \
+bkplaintext.o \
+bkpalmdoc.o \
+palmdoc/palm.o \
+fzrefcount.o \
+fzinstreammem.o \
+fzinstreamstd.o \
+fzimage.o \
+fzimagepng.o \
+fztexture.o \
+fzfont.o \
+fzscreenpsp.o \
+fzscreencommon.o \
+tinystr.o \
+tinyxmlerror.o \
+tinyxml.o \
+tinyxmlparser.o \
+bkmemcpy.o \
+res_uifont.o \
+res_txtfont.o \
+res_uitex.o \
+res_logo.o \
+res_uitex2.o 
 
 INCDIR =
-EXTRACFLAGS1 = -Oz -ffast-math -s -falign-functions=32 -fomit-frame-pointer -mno-abicalls -fno-pic -fno-stack-protector
-CFLAGS = -Imupdf/include -Idjvu/libdjvupsp -G0 -Wall -O2 -I$(shell psp-config --pspdev-path)/psp/include/freetype2
+CFLAGS = -Imupdf/include -Idjvu/libdjvupsp -G0 -O2 -I$(shell psp-config --pspdev-path)/psp/include/freetype2
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
 ASFLAGS = $(CFLAGS)
 
@@ -55,9 +89,3 @@ res_logo.c: data/logo.png
 	bin2c $< temp res_logo
 	sed s/static// temp > $@
 	rm -f temp
-
-sce: kxploit
-	rm -Rf __SCE__bookr
-	rm -Rf __SCE__bookr%
-	mv bookr __SCE__bookr
-	mv bookr% %__SCE__bookr
