@@ -38,22 +38,22 @@ http://sourceforge.net/project/showfiles.php?group_id=149290&package_id=200753
 
 1. Create the following folder in your Memory Stick, where X: is the drive unit
 where your PSP is mounted:
-X:\PSP\GAME\__SCE__bookr\fonts
+X:\PSP\GAME\bookrpsp\fonts
 
 1. Extract the contents of the cjk-fonts-1.zip file into the folder. The final
 file structure must look like this: </br>
-X:\PSP\GAME\__SCE__bookr\fonts\Adobe-CNS1-UCS2 </br>
-X:\PSP\GAME\__SCE__bookr\fonts\Adobe-GB1-UCS2 </br>
-X:\PSP\GAME\__SCE__bookr\fonts\Adobe-Japan1-UCS2 </br>
-X:\PSP\GAME\__SCE__bookr\fonts\Adobe-Korea1-UCS2 </br>
-X:\PSP\GAME\__SCE__bookr\fonts\batang.ttf </br>
-X:\PSP\GAME\__SCE__bookr\fonts\bkai00mp.ttf </br>
-X:\PSP\GAME\__SCE__bookr\fonts\bsmi00lp.ttf </br>
-X:\PSP\GAME\__SCE__bookr\fonts\dotum.ttf </br>
-X:\PSP\GAME\__SCE__bookr\fonts\gbsn00lp.ttf </br>
-X:\PSP\GAME\__SCE__bookr\fonts\gkai00mp.ttf </br>
-X:\PSP\GAME\__SCE__bookr\fonts\kochi-gothic.ttf </br>
-X:\PSP\GAME\__SCE__bookr\fonts\kochi-mincho.ttf
+X:\PSP\GAME\bookrpsp\fonts\Adobe-CNS1-UCS2 </br>
+X:\PSP\GAME\bookrpsp\fonts\Adobe-GB1-UCS2 </br>
+X:\PSP\GAME\bookrpsp\fonts\Adobe-Japan1-UCS2 </br>
+X:\PSP\GAME\bookrpsp\fonts\Adobe-Korea1-UCS2 </br>
+X:\PSP\GAME\bookrpsp\fonts\batang.ttf </br>
+X:\PSP\GAME\bookrpsp\fonts\bkai00mp.ttf </br>
+X:\PSP\GAME\bookrpsp\fonts\bsmi00lp.ttf </br>
+X:\PSP\GAME\bookrpsp\fonts\dotum.ttf </br>
+X:\PSP\GAME\bookrpsp\fonts\gbsn00lp.ttf </br>
+X:\PSP\GAME\bookrpsp\fonts\gkai00mp.ttf </br>
+X:\PSP\GAME\bookrpsp\fonts\kochi-gothic.ttf </br>
+X:\PSP\GAME\bookrpsp\fonts\kochi-mincho.ttf
 
 
 ## Acknowledgments
