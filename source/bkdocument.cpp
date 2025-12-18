@@ -19,15 +19,12 @@
 
 #include "bkdocument.h"
 #include "bkpdf.h"
-#include "bkdjvu.h"
 #include "bkplaintext.h"
 
 BKDocument* BKDocument::create(string& filePath) {
 	BKDocument* doc = 0;
 	if (BKPDF::isPDF(filePath)) {
 		doc = BKPDF::create(filePath);
-	} else if (BKDJVU::isDJVU(filePath)) {
-		doc = BKDJVU::create(filePath);
 	} else {
 		doc = BKPlainText::create(filePath);
 	}

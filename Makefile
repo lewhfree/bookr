@@ -18,7 +18,6 @@ $(SOURCE_DIR)/bookr.o \
 $(SOURCE_DIR)/bkbookmark.o \
 $(SOURCE_DIR)/bkpopup.o \
 $(SOURCE_DIR)/bkcolorchooser.o \
-$(SOURCE_DIR)/bkdjvu.o \
 $(SOURCE_DIR)/bkfancytext.o \
 $(SOURCE_DIR)/bkplaintext.o \
 $(SOURCE_DIR)/fzrefcount.o \
@@ -42,13 +41,13 @@ $(SOURCE_DIR)/res_logo.o \
 $(SOURCE_DIR)/res_uitex2.o 
 
 INCDIR =
-CFLAGS = -Imupdf/include -Iinclude -Idjvu/libdjvupsp -G0 -O2 -I$(shell psp-config --pspdev-path)/psp/include/freetype2
+CFLAGS = -Imupdf/include -Iinclude -G0 -O2 -I$(shell psp-config --pspdev-path)/psp/include/freetype2
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
 ASFLAGS = $(CFLAGS)
 
 LIBDIR =
 LDFLAGS =
-LIBS=-Lmupdf/libs -Ldjvu/libs -ldjvulibre -lmupdf -lraster -lworld -lfonts -lstream -lbase -lpspgum -lpspgu -lpsppower -lpsprtc -lpng -lz -ljpeg -lm -lfreetype -lstdc++ -lsupc++ -lbz2
+LIBS=-Lmupdf/libs -lmupdf -lraster -lworld -lfonts -lstream -lbase -lpspgum -lpspgu -lpsppower -lpsprtc -lpng -lz -ljpeg -lm -lfreetype -lstdc++ -lsupc++ -lbz2
 
 EXTRA_TARGETS = EBOOT.PBP
 EXTRA_CLEAN += user.xml bookmark.xml
