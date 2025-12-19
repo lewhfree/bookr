@@ -3,6 +3,7 @@
 PSP_EBOOT_ICON=data/icon0.png
 TARGET=bookr
 SOURCE_DIR=source
+TINYXML_SOURCE_DIR=tinyxml
 
 OBJS:= \
 $(SOURCE_DIR)/bkpdf.o \
@@ -29,10 +30,10 @@ $(SOURCE_DIR)/fztexture.o \
 $(SOURCE_DIR)/fzfont.o \
 $(SOURCE_DIR)/fzscreenpsp.o \
 $(SOURCE_DIR)/fzscreencommon.o \
-$(SOURCE_DIR)/tinystr.o \
-$(SOURCE_DIR)/tinyxmlerror.o \
-$(SOURCE_DIR)/tinyxml.o \
-$(SOURCE_DIR)/tinyxmlparser.o \
+$(TINYXML_SOURCE_DIR)/tinystr.o \
+$(TINYXML_SOURCE_DIR)/tinyxmlerror.o \
+$(TINYXML_SOURCE_DIR)/tinyxml.o \
+$(TINYXML_SOURCE_DIR)/tinyxmlparser.o \
 $(SOURCE_DIR)/bkmemcpy.o \
 $(SOURCE_DIR)/res_uifont.o \
 $(SOURCE_DIR)/res_txtfont.o \
@@ -41,7 +42,7 @@ $(SOURCE_DIR)/res_logo.o \
 $(SOURCE_DIR)/res_uitex2.o 
 
 INCDIR =
-CFLAGS = -Imupdf/include -Iinclude -G0 -O2 -I$(shell psp-config --pspdev-path)/psp/include/freetype2
+CFLAGS = -Imupdf/include -Iinclude -Iinclude/tinyxml -G0 -O2 -I$(shell psp-config --pspdev-path)/psp/include/freetype2
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
 ASFLAGS = $(CFLAGS)
 
