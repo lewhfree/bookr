@@ -1,5 +1,5 @@
 ---
-Language:        Cpp
+Language: Cpp
 AccessModifierOffset: -4
 AlignAfterOpenBracket: Align
 AlignConsecutiveAssignments: true
@@ -8,11 +8,11 @@ AlignEscapedNewlines: Left
 AlignOperands: true
 AlignTrailingComments: true
 BreakBeforeBraces: Linux 
-ColumnLimit:     80 
+ColumnLimit: 220 
 
-IndentWidth:     4
-TabWidth:        4
-UseTab:          Never 
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never 
 
 IndentCaseLabels: false
 KeepEmptyLinesAtTheStartOfBlocks: false
@@ -24,5 +24,5 @@ SpaceInEmptyParentheses: false
 SpacesInCStyleCastParentheses: false
 SpacesInContainerLiterals: true
 SpacesInParentheses: false
-SortIncludes: true
+SortIncludes: false
 ...

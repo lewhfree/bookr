@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -19,47 +19,47 @@
 
 #include "fzrefcount.h"
 
-//#define DEBUG_REFCOUNT
+// #define DEBUG_REFCOUNT
 
 #ifdef DEBUG_REFCOUNT
 #include <pspdebug.h>
 #define printf pspDebugScreenPrintf
 #endif
 
-void FZRefCounted::tidy() {
-	if (references < 0) {
+void FZRefCounted::tidy()
+{
+    if (references < 0) {
 #ifdef DEBUG_REFCOUNT
-		printf("Instance %p: FZRefCounted::tidy() called with references = %d\n", this, references);
+        printf("Instance %p: FZRefCounted::tidy() called with references = %d\n", this, references);
 #endif
-	} else if (references == 0) {
+    } else if (references == 0) {
 #ifdef DEBUG_REFCOUNT
-		printf("Instance %p: delete() call chain begins...\n", this);
+        printf("Instance %p: delete() call chain begins...\n", this);
 #endif
-		delete this;
+        delete this;
 #ifdef DEBUG_REFCOUNT
-		printf("Instance %p: delete() call chain ends\n", this);
+        printf("Instance %p: delete() call chain ends\n", this);
 #endif
-	}
+    }
 }
 
-FZRefCounted::FZRefCounted() : references(1) {
-}
+FZRefCounted::FZRefCounted() : references(1) {}
 
-FZRefCounted::~FZRefCounted() {
-}
+FZRefCounted::~FZRefCounted() {}
 
-void FZRefCounted::retain() {
-	++references;
+void FZRefCounted::retain()
+{
+    ++references;
 #ifdef DEBUG_REFCOUNT
-	printf("Instance %p: retained, now references = %d\n", this, references);
+    printf("Instance %p: retained, now references = %d\n", this, references);
 #endif
 }
 
-void FZRefCounted::release() {
-	--references;
+void FZRefCounted::release()
+{
+    --references;
 #ifdef DEBUG_REFCOUNT
-	printf("Instance %p: released, now references = %d\n", this, references);
+    printf("Instance %p: released, now references = %d\n", this, references);
 #endif
-	tidy();
+    tidy();
 }
-

@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -25,31 +25,34 @@
 /**
  * Memory based input stream.
  */
-class FZInputStreamMem : public FZInputStream {
-	char* base;
-	int size;
-	int position;
+class FZInputStreamMem : public FZInputStream
+{
+    char* base;
+    int   size;
+    int   position;
+
 protected:
-	FZInputStreamMem(char* b, int s);
-	virtual ~FZInputStreamMem();
+    FZInputStreamMem(char* b, int s);
+    virtual ~FZInputStreamMem();
+
 public:
-	/**
-	 * Check for end of stream.
-	 */
-	virtual bool eos();
-	/**
-	 * Get a byte from the stream.
-	 */
-	virtual char get();
-	/**
-	 * Get a block of bytes byte from the stream.
-	 * Returns the number of bytes read.
-	 */
-	virtual int getBlock(char* where, int size);
-	/**
-	 * Create a stream from a memory buffer
-	 */
-	static FZInputStreamMem* create(char* b, int s);
+    /**
+     * Check for end of stream.
+     */
+    virtual bool eos();
+    /**
+     * Get a byte from the stream.
+     */
+    virtual char get();
+    /**
+     * Get a block of bytes byte from the stream.
+     * Returns the number of bytes read.
+     */
+    virtual int getBlock(char* where, int size);
+    /**
+     * Create a stream from a memory buffer
+     */
+    static FZInputStreamMem* create(char* b, int s);
 };
 
 #endif

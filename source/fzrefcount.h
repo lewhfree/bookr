@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 #define FZREFCOUNT_H
 
 #ifdef _MSC_VER
-#pragma warning( disable : 4786 )
+#pragma warning(disable : 4786)
 #endif
 
 /**
@@ -32,27 +32,27 @@
  * FZRefCounted::retain() and FZRefCounted::release() are NOT overridable for
  * this reason.
  */
-class FZRefCounted {
-	int references;
-	void tidy();
+class FZRefCounted
+{
+    int  references;
+    void tidy();
 
-	protected:
-	// Force factory construction
-	FZRefCounted();
-	// Force destruction by release
-	virtual ~FZRefCounted();
+protected:
+    // Force factory construction
+    FZRefCounted();
+    // Force destruction by release
+    virtual ~FZRefCounted();
 
-	public:
-	/**
-	 * Increase reference count.
-	 */
-	void retain();
-	/**
-	 * Decrease reference count.
-	 * It's only when calling this method that the object may get deleted.
-	 */
-	void release();
+public:
+    /**
+     * Increase reference count.
+     */
+    void retain();
+    /**
+     * Decrease reference count.
+     * It's only when calling this method that the object may get deleted.
+     */
+    void release();
 };
 
 #endif
-

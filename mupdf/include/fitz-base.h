@@ -10,4 +10,3 @@
 #include "fitz/base_geom.h"
 #include "fitz/base_hash.h"
 #include "fitz/base_pixmap.h"
-

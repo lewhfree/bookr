@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -27,30 +27,33 @@
 /**
  * STDIO based input stream.
  */
-class FZInputStreamStd : public FZInputStream {
-	FILE* file;
+class FZInputStreamStd : public FZInputStream
+{
+    FILE* file;
+
 protected:
-	FZInputStreamStd(const char* name);
-	virtual ~FZInputStreamStd();
+    FZInputStreamStd(const char* name);
+    virtual ~FZInputStreamStd();
+
 public:
-	/**
-	 * Check for end of stream.
-	 */
-	virtual bool eos();
-	/**
-	 * Get a byte from the stream.
-	 */
-	virtual char get();
-	/**
-	 * Get a block of bytes byte from the stream.
-	 * Returns the number of bytes read.
-	 */
-	virtual int getBlock(char* where, int size);
-	/**
-	 * Open a file for input.
-	 * / and \ are automatically translated.
-	 */
-	static FZInputStreamStd* create(const char* name);
+    /**
+     * Check for end of stream.
+     */
+    virtual bool eos();
+    /**
+     * Get a byte from the stream.
+     */
+    virtual char get();
+    /**
+     * Get a block of bytes byte from the stream.
+     * Returns the number of bytes read.
+     */
+    virtual int getBlock(char* where, int size);
+    /**
+     * Open a file for input.
+     * / and \ are automatically translated.
+     */
+    static FZInputStreamStd* create(const char* name);
 };
 
 #endif

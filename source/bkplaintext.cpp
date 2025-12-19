@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -22,73 +22,59 @@
 using namespace std;
 #include "bkplaintext.h"
 
-BKPlainText::BKPlainText() : buffer(0) { }
-BKPlainText::~BKPlainText() {
-	saveLastView();
-	if (buffer)
-		free(buffer);
+BKPlainText::BKPlainText() : buffer(0) {}
+BKPlainText::~BKPlainText()
+{
+    saveLastView();
+    if (buffer)
+        free(buffer);
 }
 
-BKPlainText* BKPlainText::create(string& file) {
-	BKPlainText* r = new BKPlainText();
-	r->fileName = file;
+BKPlainText* BKPlainText::create(string& file)
+{
+    BKPlainText* r = new BKPlainText();
+    r->fileName    = file;
 
-	// read file to memory
-	FILE* f = fopen(file.c_str(), "r");
-	if (f == NULL) {
-		delete r;
-		return NULL;
-	}
-	long length = 0;
-	fseek(f, 0, SEEK_END);
-	length = ftell(f);
-	fseek(f, 0, SEEK_SET);
-	if (length > 4*1024*1024)
-		length = 4*1024*1024;
-	char* b = (char*)malloc(length);
-	fread(b, length, 1, f);
-	fclose(f);
+    // read file to memory
+    FILE* f = fopen(file.c_str(), "r");
+    if (f == NULL) {
+        delete r;
+        return NULL;
+    }
+    long length = 0;
+    fseek(f, 0, SEEK_END);
+    length = ftell(f);
+    fseek(f, 0, SEEK_SET);
+    if (length > 4 * 1024 * 1024)
+        length = 4 * 1024 * 1024;
+    char* b = (char*)malloc(length);
+    fread(b, length, 1, f);
+    fclose(f);
 
-	bool isHTML = false;
-	// FIX: make the heuristic a bit more advanced than that...
-	const char* fc = file.c_str();
-	int fs = file.size();
-	if (
-		((fc[fs - 1] | 0x20) == 'l') &&
-		((fc[fs - 2] | 0x20) == 'm') &&
-		((fc[fs - 3] | 0x20) == 't') &&
-		((fc[fs - 4] | 0x20) == 'h')
-	) {
-		isHTML = true;
-	}
-	if (
-		((fc[fs - 1] | 0x20) == 'm') &&
-		((fc[fs - 2] | 0x20) == 't') &&
-		((fc[fs - 3] | 0x20) == 'h')
-	) {
-		isHTML = true;
-	}
-	
-	if (isHTML) {
-		r->buffer = BKFancyText::parseHTML(r, b, length);
-	} else {
-		r->buffer = BKFancyText::parseText(r, b, length);
-	}
+    bool isHTML = false;
+    // FIX: make the heuristic a bit more advanced than that...
+    const char* fc = file.c_str();
+    int         fs = file.size();
+    if (((fc[fs - 1] | 0x20) == 'l') && ((fc[fs - 2] | 0x20) == 'm') && ((fc[fs - 3] | 0x20) == 't') && ((fc[fs - 4] | 0x20) == 'h')) {
+        isHTML = true;
+    }
+    if (((fc[fs - 1] | 0x20) == 'm') && ((fc[fs - 2] | 0x20) == 't') && ((fc[fs - 3] | 0x20) == 'h')) {
+        isHTML = true;
+    }
 
-	r->resetFonts();
-	r->resizeView(480, 272);
-	return r;
+    if (isHTML) {
+        r->buffer = BKFancyText::parseHTML(r, b, length);
+    } else {
+        r->buffer = BKFancyText::parseText(r, b, length);
+    }
+
+    r->resetFonts();
+    r->resizeView(480, 272);
+    return r;
 }
 
-void BKPlainText::getFileName(string& fn) {
-	fn = fileName;
-}
+void BKPlainText::getFileName(string& fn) { fn = fileName; }
 
-void BKPlainText::getTitle(string& t) {
-	t = "FIX PLAIN TEXT TITLES";
-}
+void BKPlainText::getTitle(string& t) { t = "FIX PLAIN TEXT TITLES"; }
 
-void BKPlainText::getType(string& t) {
-	t = "Plain text";
-}
-
+void BKPlainText::getType(string& t) { t = "Plain text"; }

@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -21,35 +21,37 @@
 
 #include "fzinstreamsized.h"
 
-FZInputStreamSized::FZInputStreamSized(FZInputStream* s, int n) : in(s), size(n) {
-	assert(size >= 0);
-	in->retain();
+FZInputStreamSized::FZInputStreamSized(FZInputStream* s, int n) : in(s), size(n)
+{
+    assert(size >= 0);
+    in->retain();
 }
 
-FZInputStreamSized::~FZInputStreamSized() {
-	in->release();
-	in = 0;
-	size = -1;
+FZInputStreamSized::~FZInputStreamSized()
+{
+    in->release();
+    in   = 0;
+    size = -1;
 }
 
-FZInputStreamSized* FZInputStreamSized::create(FZInputStream* s, int n) {
-	FZInputStreamSized* z = new FZInputStreamSized(s, n);
-	return z;
+FZInputStreamSized* FZInputStreamSized::create(FZInputStream* s, int n)
+{
+    FZInputStreamSized* z = new FZInputStreamSized(s, n);
+    return z;
 }
 
-bool FZInputStreamSized::eos() {
-	return size <= 0 || in->eos();
+bool FZInputStreamSized::eos() { return size <= 0 || in->eos(); }
+
+char FZInputStreamSized::get()
+{
+    --size;
+    return in->get();
 }
 
-char FZInputStreamSized::get() {
-	--size;
-	return in->get();
+int FZInputStreamSized::getBlock(void* where, int s)
+{
+    size -= s;
+    if (size < s)
+        s = size;
+    return in->getBlock(where, s);
 }
-
-int FZInputStreamSized::getBlock(void* where, int s) {
-	size -= s;
-	if (size < s)
-		s = size;
-	return in->getBlock(where, s);
-}
-

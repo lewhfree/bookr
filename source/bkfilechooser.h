@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -26,26 +26,26 @@ using namespace std;
 
 #include "bklayer.h"
 
-class BKFileChooser : public BKLayer {
-	string path;
-	string title;
-	int ret;
-	vector<FZDirent> dirFiles;
-	void updateDirFiles();
+class BKFileChooser : public BKLayer
+{
+    string           path;
+    string           title;
+    int              ret;
+    vector<FZDirent> dirFiles;
+    void             updateDirFiles();
 
-	protected:
-	BKFileChooser(string& t, int r);
-	~BKFileChooser();
+protected:
+    BKFileChooser(string& t, int r);
+    ~BKFileChooser();
 
-	public:
-	virtual int update(unsigned int buttons);
-	virtual void render();
+public:
+    virtual int  update(unsigned int buttons);
+    virtual void render();
 
-	void getCurrentDirent(FZDirent& de);
-	void getFullPath(string& s);
+    void getCurrentDirent(FZDirent& de);
+    void getFullPath(string& s);
 
-	static BKFileChooser* create(string& t, int r);
+    static BKFileChooser* create(string& t, int r);
 };
 
 #endif
-

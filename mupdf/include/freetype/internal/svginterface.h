@@ -15,32 +15,25 @@
  *
  */
 
-
 #ifndef SVGINTERFACE_H_
 #define SVGINTERFACE_H_
 
 #include <ft2build.h>
 #include <freetype/otsvg.h>
 
-
 FT_BEGIN_HEADER
 
-  typedef FT_Error
-  (*Preset_Bitmap_Func)( FT_Module     module,
-                         FT_GlyphSlot  slot,
-                         FT_Bool       cache );
+typedef FT_Error (*Preset_Bitmap_Func)(FT_Module module, FT_GlyphSlot slot, FT_Bool cache);
 
-  typedef struct  SVG_Interface_
-  {
-    Preset_Bitmap_Func  preset_slot;
+typedef struct SVG_Interface_ {
+    Preset_Bitmap_Func preset_slot;
 
-  } SVG_Interface;
+} SVG_Interface;
 
-  typedef SVG_Interface*  SVG_Service;
+typedef SVG_Interface* SVG_Service;
 
 FT_END_HEADER
 
 #endif /* SVGINTERFACE_H_ */
-
 
 /* END */

@@ -15,12 +15,12 @@
 #error "fitz-world.h must be included before mupdf.h"
 #endif
 
-void pdf_logxref(char *fmt, ...);
-void pdf_logrsrc(char *fmt, ...);
-void pdf_logfont(char *fmt, ...);
-void pdf_logimage(char *fmt, ...);
-void pdf_logshade(char *fmt, ...);
-void pdf_logpage(char *fmt, ...);
+void pdf_logxref(char* fmt, ...);
+void pdf_logrsrc(char* fmt, ...);
+void pdf_logfont(char* fmt, ...);
+void pdf_logimage(char* fmt, ...);
+void pdf_logshade(char* fmt, ...);
+void pdf_logpage(char* fmt, ...);
 
 #include "mupdf/syntax.h"
 #include "mupdf/xref.h"
@@ -28,4 +28,3 @@ void pdf_logpage(char *fmt, ...);
 #include "mupdf/content.h"
 #include "mupdf/annot.h"
 #include "mupdf/page.h"
-

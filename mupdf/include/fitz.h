@@ -7,4 +7,3 @@
 #include "fitz-stream.h"
 #include "fitz-world.h"
 #include "fitz-draw.h"
-

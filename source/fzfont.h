@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -27,39 +27,38 @@
 #include "fztexture.h"
 
 struct FZCharMetrics {
-	short x, y, width, height, xoffset, yoffset, xadvance;
+    short x, y, width, height, xoffset, yoffset, xadvance;
 };
 
 /**
  * Represents a font.
  */
-class FZFont : public FZTexture {
-
-	FZCharMetrics* metrics;
-	int lineHeight;
-	static FZFont* createProto(FT_Library& library, FT_Face& face, int fontSize, bool autohint);
+class FZFont : public FZTexture
+{
+    FZCharMetrics* metrics;
+    int            lineHeight;
+    static FZFont* createProto(FT_Library& library, FT_Face& face, int fontSize, bool autohint);
 
 protected:
-	FZFont();
-	~FZFont();
+    FZFont();
+    ~FZFont();
 
 public:
-	/**
-	 * Get line height
-	 */
-	int getLineHeight();
+    /**
+     * Get line height
+     */
+    int getLineHeight();
 
-	/**
-	 * Get char metrics. Array is always for 256 chars, for the time being...
-	 */
-	FZCharMetrics* getMetrics();
+    /**
+     * Get char metrics. Array is always for 256 chars, for the time being...
+     */
+    FZCharMetrics* getMetrics();
 
-	/**
-	 * Create a new font texture with Freetype.
-	 */
-	static FZFont* createFromFile(char* fileName, int fontSize, bool autohint);
-	static FZFont* createFromMemory(unsigned char* buffer, int bufferSize, int fontSize, bool autohint);
+    /**
+     * Create a new font texture with Freetype.
+     */
+    static FZFont* createFromFile(char* fileName, int fontSize, bool autohint);
+    static FZFont* createFromMemory(unsigned char* buffer, int bufferSize, int fontSize, bool autohint);
 };
 
 #endif
-

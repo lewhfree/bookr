@@ -19,23 +19,21 @@ typedef struct fz_buffer_s fz_buffer;
 
 #define FZ_BUFSIZE (8 * 1024)
 
-struct fz_buffer_s
-{
-	int refs;
-	int ownsdata;
-	unsigned char *bp;
-	unsigned char *rp;
-	unsigned char *wp;
-	unsigned char *ep;
-	int eof;
+struct fz_buffer_s {
+    int            refs;
+    int            ownsdata;
+    unsigned char* bp;
+    unsigned char* rp;
+    unsigned char* wp;
+    unsigned char* ep;
+    int            eof;
 };
 
-fz_error *fz_newbuffer(fz_buffer **bufp, int size);
-fz_error *fz_newbufferwithmemory(fz_buffer **bufp, unsigned char *data, int size);
+fz_error* fz_newbuffer(fz_buffer** bufp, int size);
+fz_error* fz_newbufferwithmemory(fz_buffer** bufp, unsigned char* data, int size);
 
-fz_error *fz_rewindbuffer(fz_buffer *buf);
-fz_error *fz_growbuffer(fz_buffer *buf);
+fz_error* fz_rewindbuffer(fz_buffer* buf);
+fz_error* fz_growbuffer(fz_buffer* buf);
 
-fz_buffer *fz_keepbuffer(fz_buffer *buf);
-void fz_dropbuffer(fz_buffer *buf);
-
+fz_buffer* fz_keepbuffer(fz_buffer* buf);
+void       fz_dropbuffer(fz_buffer* buf);

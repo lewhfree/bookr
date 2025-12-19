@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2007 Christian Payeur (christian dot payeur at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -26,23 +26,21 @@ using namespace std;
 
 #include "bklayer.h"
 
+class BKColorSchemeManager : public BKLayer
+{
+    string title;
+    int    colorScheme;
 
+protected:
+    BKColorSchemeManager(string& t);
+    ~BKColorSchemeManager();
 
-class BKColorSchemeManager : public BKLayer {
-	string title;
-	int	colorScheme;
+public:
+    virtual int  update(unsigned int buttons);
+    virtual void render();
+    virtual int  getColorScheme();
 
-	protected:
-	BKColorSchemeManager(string& t);
-	~BKColorSchemeManager();
-
-	public:
-	virtual int update(unsigned int buttons);
-	virtual void render();
-	virtual int getColorScheme();
-	
-	static BKColorSchemeManager* create(string& t);
-	
+    static BKColorSchemeManager* create(string& t);
 };
 
 #endif /*BKCOLORSCHEMEMANAGER_H*/

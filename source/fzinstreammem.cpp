@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -22,32 +22,26 @@
 
 #include "fzinstreammem.h"
 
-FZInputStreamMem::FZInputStreamMem(char* b, int s) : FZInputStream(), base(b), size(s), position(0) {
+FZInputStreamMem::FZInputStreamMem(char* b, int s) : FZInputStream(), base(b), size(s), position(0) {}
+
+FZInputStreamMem::~FZInputStreamMem() { base = 0; }
+
+FZInputStreamMem* FZInputStreamMem::create(char* b, int s) { return new FZInputStreamMem(b, s); }
+
+bool FZInputStreamMem::eos() { return position < size; }
+
+char FZInputStreamMem::get()
+{
+    char r = *base;
+    ++position;
+    ++base;
+    return r;
 }
 
-FZInputStreamMem::~FZInputStreamMem() {
-	base = 0;
+int FZInputStreamMem::getBlock(char* where, int size)
+{
+    memcpy(where, base, size);
+    base += size;
+    position += size;
+    return size;
 }
-
-FZInputStreamMem* FZInputStreamMem::create(char* b, int s) {
-	return new FZInputStreamMem(b, s);
-}
-
-bool FZInputStreamMem::eos() {
-	return position < size;
-}
-
-char FZInputStreamMem::get() {
-	char r = *base;
-	++position;
-	++base;
-	return r;
-}
-
-int FZInputStreamMem::getBlock(char* where, int size) {
-	memcpy(where, base, size);
-	base += size;
-	position += size;
-	return size;
-}
-

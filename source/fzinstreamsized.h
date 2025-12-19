@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -26,31 +26,33 @@
  * Sub-stream based input stream.
  * Reads up to a given size from a given input stream,
  */
-class FZInputStreamSized : public FZInputStream {
-	FZInputStream* in;
-	int size;
+class FZInputStreamSized : public FZInputStream
+{
+    FZInputStream* in;
+    int            size;
+
 protected:
-	FZInputStreamSized(FZInputStream* s, int n);
-	virtual ~FZInputStreamSized();
+    FZInputStreamSized(FZInputStream* s, int n);
+    virtual ~FZInputStreamSized();
+
 public:
-	/**
-	 * Check for end of stream.
-	 */
-	virtual bool eos();
-	/**
-	 * Get a byte from the stream.
-	 */
-	virtual char get();
-	/**
-	 * Get a block of bytes byte from the stream.
-	 * Returns if true the whole block was read ok, false otherwise.
-	 */
-	virtual int getBlock(void* where, int s);
-	/**
-	 * Create a new sub-stream from s, reading a maximum of n bytes.
-	 */
-	static FZInputStreamSized* create(FZInputStream* s, int n);
+    /**
+     * Check for end of stream.
+     */
+    virtual bool eos();
+    /**
+     * Get a byte from the stream.
+     */
+    virtual char get();
+    /**
+     * Get a block of bytes byte from the stream.
+     * Returns if true the whole block was read ok, false otherwise.
+     */
+    virtual int getBlock(void* where, int s);
+    /**
+     * Create a new sub-stream from s, reading a maximum of n bytes.
+     */
+    static FZInputStreamSized* create(FZInputStream* s, int n);
 };
 
 #endif
-

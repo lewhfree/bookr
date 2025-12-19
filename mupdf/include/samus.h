@@ -22,4 +22,3 @@
 
 #include "samus/names.h"
 #include "samus/fixdoc.h"
-

@@ -1,7 +1,7 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -26,29 +26,29 @@ using namespace std;
 
 #include "bklayer.h"
 
-class BKColorChooser : public BKLayer {
-	unsigned int colorScheme;
-	unsigned int color;
-	int hueY;
-	int svX;
-	int svY;
-	FZTexture* hueTex;
-	bool hueMode;
-	int ret;
-	void recalcColor();
+class BKColorChooser : public BKLayer
+{
+    unsigned int colorScheme;
+    unsigned int color;
+    int          hueY;
+    int          svX;
+    int          svY;
+    FZTexture*   hueTex;
+    bool         hueMode;
+    int          ret;
+    void         recalcColor();
 
-	protected:
-	BKColorChooser(int cs, int c, int r);
-	~BKColorChooser();
+protected:
+    BKColorChooser(int cs, int c, int r);
+    ~BKColorChooser();
 
-	public:
-	virtual int update(unsigned int buttons);
-	virtual void render();
+public:
+    virtual int  update(unsigned int buttons);
+    virtual void render();
 
-	unsigned int getColor();
+    unsigned int getColor();
 
-	static BKColorChooser* create(int c, int re);
+    static BKColorChooser* create(int c, int re);
 };
 
 #endif
-

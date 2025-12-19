@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -31,58 +31,55 @@
 #define STDSEP '/'
 #endif
 
-static int mystrncpy(const char* from, char* to, int size) {
-	int c = 0;
-	while (*from != '\0' && c < (size - 1)) {
-		*to = *from;
-		++from;
-		++to;
-		++c;
-	}
-	*to = '\0';
-	++c;
-	return c;
+static int mystrncpy(const char* from, char* to, int size)
+{
+    int c = 0;
+    while (*from != '\0' && c < (size - 1)) {
+        *to = *from;
+        ++from;
+        ++to;
+        ++c;
+    }
+    *to = '\0';
+    ++c;
+    return c;
 }
 
-FZInputStreamStd::FZInputStreamStd(const char* name) : FZInputStream(), file(NULL) {
-	char sname[4096];
-	int bytes = mystrncpy(name, sname, 4096);
-	if (bytes > 4096) {
-		return;
-	}
-	char *p;
-	for (p = sname; *p != 0; ++p) {
-		if (*p == STDBADSEP) {
-			*p = STDSEP;
-		}
-	} 
-	file = fopen(sname, STDMODE);
+FZInputStreamStd::FZInputStreamStd(const char* name) : FZInputStream(), file(NULL)
+{
+    char sname[4096];
+    int  bytes = mystrncpy(name, sname, 4096);
+    if (bytes > 4096) {
+        return;
+    }
+    char* p;
+    for (p = sname; *p != 0; ++p) {
+        if (*p == STDBADSEP) {
+            *p = STDSEP;
+        }
+    }
+    file = fopen(sname, STDMODE);
 }
 
-FZInputStreamStd::~FZInputStreamStd() {
-	if (file != NULL)
-		fclose(file);
-	file = NULL;
+FZInputStreamStd::~FZInputStreamStd()
+{
+    if (file != NULL)
+        fclose(file);
+    file = NULL;
 }
 
-FZInputStreamStd* FZInputStreamStd::create(const char* name) {
-	FZInputStreamStd* s = new FZInputStreamStd(name);
-	if (s->file == NULL) {
-		s->release();
-		return 0;
-	}
-	return s;
+FZInputStreamStd* FZInputStreamStd::create(const char* name)
+{
+    FZInputStreamStd* s = new FZInputStreamStd(name);
+    if (s->file == NULL) {
+        s->release();
+        return 0;
+    }
+    return s;
 }
 
-bool FZInputStreamStd::eos() {
-	return feof(file) != 0 ? true : false;
-}
+bool FZInputStreamStd::eos() { return feof(file) != 0 ? true : false; }
 
-char FZInputStreamStd::get() {
-	return fgetc(file);
-}
+char FZInputStreamStd::get() { return fgetc(file); }
 
-int FZInputStreamStd::getBlock(char* where, int size) {
-	return fread(where, 1, size, file);
-}
-
+int FZInputStreamStd::getBlock(char* where, int size) { return fread(where, 1, size, file); }

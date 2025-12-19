@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -26,24 +26,24 @@ using namespace std;
 
 #include "bklayer.h"
 
-#define BKPOPUP_WARNING		1
-#define BKPOPUP_ERROR		2
-#define BKPOPUP_INFO		3
+#define BKPOPUP_WARNING 1
+#define BKPOPUP_ERROR 2
+#define BKPOPUP_INFO 3
 
-class BKPopup : public BKLayer {
-	int mode;
-	string text;
+class BKPopup : public BKLayer
+{
+    int    mode;
+    string text;
 
-	protected:
-	BKPopup(int m, string t);	
-	~BKPopup();
+protected:
+    BKPopup(int m, string t);
+    ~BKPopup();
 
-	public:
-	virtual int update(unsigned int buttons);
-	virtual void render();
-	
-	static BKPopup* create(int m, string t);	
+public:
+    virtual int  update(unsigned int buttons);
+    virtual void render();
+
+    static BKPopup* create(int m, string t);
 };
 
 #endif
-

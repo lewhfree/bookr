@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -30,66 +30,66 @@ using namespace std;
 #include "bkdocument.h"
 
 struct PDFContext;
-class BKPDF : public BKDocument {
-	PDFContext* ctx;
+class BKPDF : public BKDocument
+{
+    PDFContext* ctx;
 
-	string fileName;
+    string fileName;
 
-	int panX;
-	int panY;
-	bool loadNewPage;
-	bool pageError;
-	void panBuffer(int nx, int ny);
-	void clipCoords(float& nx, float& ny);
-	void redrawBuffer();
-	int prePan(int x, int y);
+    int  panX;
+    int  panY;
+    bool loadNewPage;
+    bool pageError;
+    void panBuffer(int nx, int ny);
+    void clipCoords(float& nx, float& ny);
+    void redrawBuffer();
+    int  prePan(int x, int y);
 
-	string title;
+    string title;
 
-	protected:
-	BKPDF(string& f);
-	~BKPDF();
+protected:
+    BKPDF(string& f);
+    ~BKPDF();
 
-	public:
-	virtual int updateContent();
-	virtual int resume();
-	virtual void renderContent();
+public:
+    virtual int  updateContent();
+    virtual int  resume();
+    virtual void renderContent();
 
-	virtual void getFileName(string&);
-	virtual void getTitle(string&);
-	virtual void getType(string&);
+    virtual void getFileName(string&);
+    virtual void getTitle(string&);
+    virtual void getType(string&);
 
-	virtual bool isPaginated();
-	virtual int getTotalPages();
-	virtual int getCurrentPage();
-	virtual int setCurrentPage(int);
+    virtual bool isPaginated();
+    virtual int  getTotalPages();
+    virtual int  getCurrentPage();
+    virtual int  setCurrentPage(int);
 
-	virtual bool isZoomable();
-	virtual void getZoomLevels(vector<BKDocument::ZoomLevel>& v);
-	virtual int getCurrentZoomLevel();
-	virtual int setZoomLevel(int);
-	virtual bool hasZoomToFit();
-	virtual int setZoomToFitWidth();
-	virtual int setZoomToFitHeight();
+    virtual bool isZoomable();
+    virtual void getZoomLevels(vector<BKDocument::ZoomLevel>& v);
+    virtual int  getCurrentZoomLevel();
+    virtual int  setZoomLevel(int);
+    virtual bool hasZoomToFit();
+    virtual int  setZoomToFitWidth();
+    virtual int  setZoomToFitHeight();
 
-	virtual int pan(int, int);
+    virtual int pan(int, int);
 
-	virtual int screenUp();
-	virtual int screenDown();
-	virtual int screenLeft();
-	virtual int screenRight();
+    virtual int screenUp();
+    virtual int screenDown();
+    virtual int screenLeft();
+    virtual int screenRight();
 
-	virtual bool isRotable();
-	virtual int getRotation();
-	virtual int setRotation(int, bool bForce=false);
+    virtual bool isRotable();
+    virtual int  getRotation();
+    virtual int  setRotation(int, bool bForce = false);
 
-	virtual bool isBookmarkable();
-	virtual void getBookmarkPosition(map<string, int>&);
-	virtual int setBookmarkPosition(map<string, int>&);
+    virtual bool isBookmarkable();
+    virtual void getBookmarkPosition(map<string, int>&);
+    virtual int  setBookmarkPosition(map<string, int>&);
 
-	static BKPDF* create(string& file);
-	static bool isPDF(string& file);
+    static BKPDF* create(string& file);
+    static bool   isPDF(string& file);
 };
 
 #endif
-

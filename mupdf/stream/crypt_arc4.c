@@ -24,73 +24,69 @@
 #include "fitz-base.h"
 #include "fitz-stream.h"
 
-void
-fz_arc4init(fz_arc4 *arc4, unsigned char *key, unsigned keylen)
+void fz_arc4init(fz_arc4* arc4, unsigned char* key, unsigned keylen)
 {
-	unsigned int t, u;
-	unsigned int keyindex;
-	unsigned int stateindex;
-	unsigned char *state;
-	unsigned int counter;
+    unsigned int   t, u;
+    unsigned int   keyindex;
+    unsigned int   stateindex;
+    unsigned char* state;
+    unsigned int   counter;
 
-	state = arc4->state;
+    state = arc4->state;
 
-	arc4->x = 0;
-	arc4->y = 0;
+    arc4->x = 0;
+    arc4->y = 0;
 
-	for (counter = 0; counter < 256; counter++) {
-		state[counter] = counter;
-	}
+    for (counter = 0; counter < 256; counter++) {
+        state[counter] = counter;
+    }
 
-	keyindex = 0;
-	stateindex = 0;
+    keyindex   = 0;
+    stateindex = 0;
 
-	for (counter = 0; counter < 256; counter++) {
-		t = state[counter];
-		stateindex = (stateindex + key[keyindex] + t) & 0xff;
-		u = state[stateindex];
+    for (counter = 0; counter < 256; counter++) {
+        t          = state[counter];
+        stateindex = (stateindex + key[keyindex] + t) & 0xff;
+        u          = state[stateindex];
 
-		state[stateindex] = t;
-		state[counter] = u;
+        state[stateindex] = t;
+        state[counter]    = u;
 
-		if (++keyindex >= keylen) {
-			keyindex = 0;
-		}
-	}
+        if (++keyindex >= keylen) {
+            keyindex = 0;
+        }
+    }
 }
 
-unsigned char
-fz_arc4next(fz_arc4 *arc4)
+unsigned char fz_arc4next(fz_arc4* arc4)
 {
-	unsigned int x;
-	unsigned int y;
-	unsigned int sx, sy;
-	unsigned char *state;
+    unsigned int   x;
+    unsigned int   y;
+    unsigned int   sx, sy;
+    unsigned char* state;
 
-	state = arc4->state;
+    state = arc4->state;
 
-	x = (arc4->x + 1) & 0xff;
-	sx = state[x];
-	y = (sx + arc4->y) & 0xff;
-	sy = state[y];
+    x  = (arc4->x + 1) & 0xff;
+    sx = state[x];
+    y  = (sx + arc4->y) & 0xff;
+    sy = state[y];
 
-	arc4->x = x;
-	arc4->y = y;
+    arc4->x = x;
+    arc4->y = y;
 
-	state[y] = sx;
-	state[x] = sy;
+    state[y] = sx;
+    state[x] = sy;
 
-	return state[(sx + sy) & 0xff];
+    return state[(sx + sy) & 0xff];
 }
 
-void
-fz_arc4encrypt(fz_arc4 *arc4, unsigned char *dest, unsigned char *src, unsigned len)
+void fz_arc4encrypt(fz_arc4* arc4, unsigned char* dest, unsigned char* src, unsigned len)
 {
-	unsigned int i;
-	for (i = 0; i < len; i++) {
-		unsigned char x;
-		x = fz_arc4next(arc4);
-		dest[i] = src[i] ^ x;
-	}
+    unsigned int i;
+    for (i = 0; i < len; i++) {
+        unsigned char x;
+        x       = fz_arc4next(arc4);
+        dest[i] = src[i] ^ x;
+    }
 }
-

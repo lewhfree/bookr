@@ -17,4 +17,3 @@
 
 #include "fitz/draw_path.h"
 #include "fitz/draw_misc.h"
-

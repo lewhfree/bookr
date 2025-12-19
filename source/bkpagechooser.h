@@ -1,5 +1,5 @@
 /*
- * bkpagechooser: random page accessing extension for bookr 
+ * bkpagechooser: random page accessing extension for bookr
  * Copyright (C) 2007 Yang.Hu (findreams at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -26,26 +26,26 @@ using namespace std;
 
 #include "bklayer.h"
 
-class BKPageChooser : public BKLayer {
-	int totalPage;
-	int currentPage;
-	int ret;
-	int numOfDigit;
-	int currentPosition;
-	int invalidPage;
+class BKPageChooser : public BKLayer
+{
+    int totalPage;
+    int currentPage;
+    int ret;
+    int numOfDigit;
+    int currentPosition;
+    int invalidPage;
 
-	protected:
-	BKPageChooser(int t, int c, int r);
-	~BKPageChooser();
+protected:
+    BKPageChooser(int t, int c, int r);
+    ~BKPageChooser();
 
-	public:
-	virtual int update(unsigned int buttons);
-	virtual void render();
+public:
+    virtual int  update(unsigned int buttons);
+    virtual void render();
 
-	int getCurrentPage();
+    int getCurrentPage();
 
-	static BKPageChooser* create(int t, int c, int r);
+    static BKPageChooser* create(int t, int c, int r);
 };
 
 #endif
-

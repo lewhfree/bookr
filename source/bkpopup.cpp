@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -22,49 +22,49 @@
 
 #include "bkpopup.h"
 
-BKPopup::BKPopup(int m, string t) : mode(m), text(t) {
+BKPopup::BKPopup(int m, string t) : mode(m), text(t) {}
+
+BKPopup::~BKPopup() {}
+
+int BKPopup::update(unsigned int buttons)
+{
+    int* b = FZScreen::ctrlReps();
+
+    if (b[BKUser::controls.cancel] == 1) {
+        return BK_CMD_CLOSE_TOP_LAYER;
+    }
+
+    return 0;
 }
 
-BKPopup::~BKPopup() {
+void BKPopup::render()
+{
+    string title;
+    int    bg1 = 0;
+    int    bg2 = 0;
+    int    fg  = 0;
+    if (mode == BKPOPUP_WARNING) {
+        bg1   = 0xf02020a0;
+        bg2   = 0xf06060ff;
+        fg    = 0xffffffff;
+        title = "Warning";
+    } else if (mode == BKPOPUP_INFO) {
+        bg1   = 0xf0a02020;
+        bg2   = 0xf0ff6060;
+        fg    = 0xffffffff;
+        title = "Info";
+    } else {
+        bg1   = 0xf02020a0;
+        bg2   = 0xf06060ff;
+        fg    = 0xffffffff;
+        title = "Error";
+    }
+    drawPopup(text, title, bg1, bg2, fg);
 }
 
-int BKPopup::update(unsigned int buttons) {
-	int* b = FZScreen::ctrlReps();
-
-	if (b[BKUser::controls.cancel] == 1) {
-			return BK_CMD_CLOSE_TOP_LAYER;
-	}
-
-	return 0;
+BKPopup* BKPopup::create(int m, string t)
+{
+    BKPopup* f = new BKPopup(m, t);
+    FZScreen::resetReps();
+    return f;
 }
-
-void BKPopup::render() {
-	string title;
-	int bg1 = 0;
-	int bg2 = 0;
-	int fg = 0;
-	if (mode == BKPOPUP_WARNING) {
-		bg1 = 0xf02020a0;
-		bg2 = 0xf06060ff;
-		fg = 0xffffffff;
-		title = "Warning";
-	} else if (mode == BKPOPUP_INFO) {
-		bg1 = 0xf0a02020;
-		bg2 = 0xf0ff6060;
-		fg = 0xffffffff;
-		title = "Info";
-	} else {
-		bg1 = 0xf02020a0;
-		bg2 = 0xf06060ff;
-		fg = 0xffffffff;
-		title = "Error";
-	}
-	drawPopup(text, title, bg1, bg2, fg);
-}
-
-BKPopup* BKPopup::create(int m, string t) {
-	BKPopup* f = new BKPopup(m, t);
-	FZScreen::resetReps();
-	return f;
-}
-

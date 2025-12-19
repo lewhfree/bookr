@@ -16,41 +16,27 @@
 
 typedef struct cfd_node_s cfd_node;
 
-struct cfd_node_s
-{
-	short val;
-	short nbits;
+struct cfd_node_s {
+    short val;
+    short nbits;
 };
 
-enum
-{
-	cfd_white_initial_bits = 8,
-	cfd_black_initial_bits = 7,
-	cfd_2d_initial_bits = 7,
-	cfd_uncompressed_initial_bits = 6	/* must be 6 */
+enum {
+    cfd_white_initial_bits        = 8,
+    cfd_black_initial_bits        = 7,
+    cfd_2d_initial_bits           = 7,
+    cfd_uncompressed_initial_bits = 6 /* must be 6 */
 };
 
 /* non-run codes in tables */
-enum
-{
-	ERROR = -1,
-	ZEROS = -2, /* EOL follows, possibly with more padding first */
-	UNCOMPRESSED = -3
+enum {
+    ERROR        = -1,
+    ZEROS        = -2, /* EOL follows, possibly with more padding first */
+    UNCOMPRESSED = -3
 };
 
 /* semantic codes for cf_2d_decode */
-enum
-{
-	P = -4,
-	H = -5,
-	VR3 = 0,
-	VR2 = 1,
-	VR1 = 2,
-	V0 = 3,
-	VL1 = 4,
-	VL2 = 5,
-	VL3 = 6
-};
+enum { P = -4, H = -5, VR3 = 0, VR2 = 1, VR1 = 2, V0 = 3, VL1 = 4, VL2 = 5, VL3 = 6 };
 
 /* Decoding tables */
 
@@ -58,4 +44,3 @@ extern const cfd_node cf_white_decode[];
 extern const cfd_node cf_black_decode[];
 extern const cfd_node cf_2d_decode[];
 extern const cfd_node cf_uncompressed_decode[];
-

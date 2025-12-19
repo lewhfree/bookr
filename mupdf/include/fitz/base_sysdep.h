@@ -7,30 +7,30 @@
 #include <assert.h>
 #include <stdarg.h>
 
-#include <limits.h>	/* INT_MIN, MAX ... */
-#include <float.h>	/* DBL_EPSILON */
+#include <limits.h> /* INT_MIN, MAX ... */
+#include <float.h>  /* DBL_EPSILON */
 #include <math.h>
 
 #include <errno.h>
-#include <fcntl.h>	/* O_RDONLY & co */
+#include <fcntl.h> /* O_RDONLY & co */
 
 #ifdef HAVE_C99
-#	define FZ_FLEX
+#define FZ_FLEX
 #else
-#	define FZ_FLEX 1
-#	define restrict
-#	define inline __inline__
+#define FZ_FLEX 1
+#define restrict
+#define inline __inline__
 #endif
 
 #ifdef WIN32
-#	define vsnprintf _vsnprintf
-#	include <io.h>
+#define vsnprintf _vsnprintf
+#include <io.h>
 #else
-#	include <unistd.h>
+#include <unistd.h>
 #endif
 
 #ifndef va_copy
-#define va_copy(a,b) (a) = (b)
+#define va_copy(a, b) (a) = (b)
 #endif
 
 #ifndef O_BINARY
@@ -62,17 +62,16 @@
 #endif
 
 #ifdef NEED_STRLCPY
-extern int strlcpy(char *dst, const char *src, int n);
-extern int strlcat(char *dst, const char *src, int n);
+extern int strlcpy(char* dst, const char* src, int n);
+extern int strlcat(char* dst, const char* src, int n);
 #endif
 
 #ifdef NEED_STRSEP
-extern char *strsep(char **stringp, const char *delim);
+extern char* strsep(char** stringp, const char* delim);
 #endif
 
 #ifdef NEED_GETOPT
-extern int getopt(int nargc, char * const * nargv, const char *ostr);
-extern int opterr, optind, optopt;
-extern char *optarg;
+extern int   getopt(int nargc, char* const* nargv, const char* ostr);
+extern int   opterr, optind, optopt;
+extern char* optarg;
 #endif
-

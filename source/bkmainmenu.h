@@ -1,5 +1,5 @@
 /*
- * Bookr: document reader for the Sony PSP 
+ * Bookr: document reader for the Sony PSP
  * Copyright (C) 2005 Carlos Carrasco Martinez (carloscm at gmail dot com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -26,44 +26,43 @@ using namespace std;
 
 #include "bklayer.h"
 
-class BKMainMenu : public BKLayer {
-	#define BKMM_MAIN 0
-	#define BKMM_CONTROLS 1
-	#define BKMM_OPTIONS 2
+class BKMainMenu : public BKLayer
+{
+#define BKMM_MAIN 0
+#define BKMM_CONTROLS 1
+#define BKMM_OPTIONS 2
 
-	int mode;
-	bool captureButton;
-	vector<BKMenuItem> mainItems;
-	vector<BKMenuItem> controlItems;
-	vector<BKMenuItem> optionItems;
-	int updateMain(unsigned int buttons);
-	int updateControls(unsigned int buttons);
-	int updateOptions(unsigned int buttons);
-	void buildMainMenu();
-	void buildControlMenu();
-	void buildOptionMenu();
+    int                mode;
+    bool               captureButton;
+    vector<BKMenuItem> mainItems;
+    vector<BKMenuItem> controlItems;
+    vector<BKMenuItem> optionItems;
+    int                updateMain(unsigned int buttons);
+    int                updateControls(unsigned int buttons);
+    int                updateOptions(unsigned int buttons);
+    void               buildMainMenu();
+    void               buildControlMenu();
+    void               buildOptionMenu();
 
-	string popupText;
-	int popupMode;
-	int frames;
+    string popupText;
+    int    popupMode;
+    int    frames;
 
-	protected:
-	BKMainMenu();	
-	~BKMainMenu();
+protected:
+    BKMainMenu();
+    ~BKMainMenu();
 
-	public:
-	virtual int update(unsigned int buttons);
-	virtual void render();
-	
-	static BKMainMenu* create();	
+public:
+    virtual int  update(unsigned int buttons);
+    virtual void render();
 
-	string getPopupText();
-	int getPopupMode();
-	void rebuildMenu();
+    static BKMainMenu* create();
 
-	typedef vector<BKMenuItem>::iterator bkMenuItemIt;
-	
+    string getPopupText();
+    int    getPopupMode();
+    void   rebuildMenu();
+
+    typedef vector<BKMenuItem>::iterator bkMenuItemIt;
 };
 
 #endif
-

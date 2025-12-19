@@ -18,4 +18,3 @@
 #include "fitz/wld_tree.h"
 #include "fitz/wld_path.h"
 #include "fitz/wld_text.h"
-
