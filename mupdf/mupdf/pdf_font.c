@@ -4,8 +4,9 @@
 #define noHINT
 
 #include <ft2build.h>
+
 #include FT_FREETYPE_H
-#include <freetype/internal/ftobjs.h>
+#include <freetype/ftfntfmt.h>
 
 static char* basefontnames[14][7] = {{"Courier", "CourierNew", "CourierNewPSMT", 0},
                                      {"Courier-Bold", "CourierNew,Bold", "Courier,Bold", "CourierNewPS-BoldMT", "CourierNew-Bold", 0},
@@ -30,7 +31,8 @@ enum { UNKNOWN, TYPE1, CFF, TRUETYPE, CID };
 
 static int ftkind(FT_Face face)
 {
-    const char* kind = face->driver->clazz->root.module_name;
+    // const char* kind = face->driver->clazz->root.module_name;
+    const char* kind = FT_Get_Font_Format(face);
     pdf_logfont("ft driver %s\n", kind);
     if (!strcmp(kind, "type1"))
         return TYPE1;
