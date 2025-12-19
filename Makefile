@@ -47,9 +47,27 @@ ASFLAGS = $(CFLAGS)
 
 LIBDIR =
 LDFLAGS =
-LIBS=-Lmupdf/libs -lmupdf -lraster -lworld -lfonts -lstream -lbase -lpspgum -lpspgu -lpsppower -lpsprtc -lpng -lz -ljpeg -lm -lfreetype -lstdc++ -lsupc++ -lbz2
+LIBS=-Lmupdf/libs \
+	-lmupdf \
+	-lraster \
+	-lworld \
+	-lfonts \
+	-lstream \
+	-lbase \
+	-lpspgum \
+	-lpspgu \
+	-lpsppower \
+	-lpsprtc \
+	-lpng \
+	-lz \
+	-ljpeg \
+	-lm \
+	-lfreetype \
+	-lstdc++ \
+	-lsupc++ \
+	-lbz2
 
-EXTRA_TARGETS = EBOOT.PBP
+EXTRA_TARGETS =	EBOOT.PBP
 EXTRA_CLEAN += user.xml bookmark.xml
 PSP_EBOOT_TITLE = Bookr - Book Reader
 

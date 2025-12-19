@@ -257,7 +257,7 @@ int BKMainMenu::updateMain(unsigned int buttons) {
 			return BK_CMD_MARK_DIRTY;
 		}
 		if (selItem == MAIN_MENU_ITEM_ABOUT) {
-			popupText = "Bookr - a document viewer for the Sony PSP.\nProgramming by Carlos, Edward and Chris.\nVisit http://bookr.sf.net for new versions.\nThis program is licensed under the terms of the GPL v2.\nUses the MuPDF and djvulibre libraries under the terms \nof their respective licenses. \nDjVu format support by Yang Hu.\nSeveral features by Paul Murray.";
+			popupText = "Bookr - a document viewer for the Sony PSP.\nProgramming by Carlos, Edward and Chris.\nVisit http://bookr.sf.net for new versions.\nThis program is licensed under the terms of the GPL v2.\nUses the MuPDF library under the terms \nof it's license.\nSeveral features by Paul Murray.";
 			popupMode = BKPOPUP_INFO;
 			return BK_CMD_MAINMENU_POPUP;
 		}
