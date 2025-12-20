@@ -1,11 +1,22 @@
-# to fix: compile manually the mupdf libs first...
-# cd mupdf; make
 PSP_EBOOT_ICON=data/icon0.png
 TARGET=bookr
 SOURCE_DIR=source
-TINYXML_SOURCE_DIR=tinyxml
+TINYXML_SOURCE_DIR=source/tinyxml
 FITZ_SOURCE_DIR=source/fitz
 BOOKR_SOURCE_DIR=source/bookr
+FONTS_SOURCE_DIR=source/fonts
+BASE_SOURCE_DIR=source/base
+MUPDF_SOURCE_DIR=source/mupdf
+RASTER_SOURCE_DIR=source/raster
+STREAM_SOURCE_DIR=source/stream
+WORLD_SOURCE_DIR=source/world
+
+include $(FONTS_SOURCE_DIR)/objs.mk
+include $(BASE_SOURCE_DIR)/objs.mk
+include $(MUPDF_SOURCE_DIR)/objs.mk
+include $(RASTER_SOURCE_DIR)/objs.mk
+include $(STREAM_SOURCE_DIR)/objs.mk
+include $(WORLD_SOURCE_DIR)/objs.mk
 
 OBJS:= \
 $(BOOKR_SOURCE_DIR)/bkpdf.o \
@@ -41,22 +52,22 @@ $(SOURCE_DIR)/res_uifont.o \
 $(SOURCE_DIR)/res_txtfont.o \
 $(SOURCE_DIR)/res_uitex.o \
 $(SOURCE_DIR)/res_logo.o \
-$(SOURCE_DIR)/res_uitex2.o 
+$(SOURCE_DIR)/res_uitex2.o \
+$(addprefix $(MUPDF_SOURCE_DIR)/, $(MUPDF_OBJS)) \
+$(addprefix $(RASTER_SOURCE_DIR)/, $(RASTER_OBJS)) \
+$(addprefix $(WORLD_SOURCE_DIR)/, $(WORLD_OBJS)) \
+$(addprefix $(FONTS_SOURCE_DIR)/, $(FONTS_OBJS)) \
+$(addprefix $(STREAM_SOURCE_DIR)/, $(STREAM_OBJS)) \
+$(addprefix $(BASE_SOURCE_DIR)/, $(BASE_OBJS)) \
 
 INCDIR =
-CFLAGS = -Imupdf/include -Iinclude -Iinclude/tinyxml -G0 -O2 -I$(shell psp-config --pspdev-path)/psp/include/freetype2 -fomit-frame-pointer
+CFLAGS = -Iinclude -Iinclude/tinyxml -Iinclude/mupdf -G0 -Os -I$(shell psp-config --pspdev-path)/psp/include/freetype2 -fomit-frame-pointer
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
 ASFLAGS = $(CFLAGS)
 
 LIBDIR =
-LDFLAGS =
-LIBS=-Lmupdf/libs \
-	-lmupdf \
-	-lraster \
-	-lworld \
-	-lfonts \
-	-lstream \
-	-lbase \
+LDFLAGS = -Wl,--as-needed -Wl,--strip-all
+LIBS= \
 	-lpspgum \
 	-lpspgu \
 	-lpsppower \
@@ -70,15 +81,22 @@ LIBS=-Lmupdf/libs \
 	-lsupc++ \
 	-lbz2
 
-EXTRA_TARGETS =	EBOOT.PBP
-EXTRA_CLEAN += user.xml bookmark.xml
+EXTRA_TARGETS = EBOOT.PBP
+EXTRA_CLEAN += user.xml bookmark.xml \
+$(addprefix $(FONTS_SOURCE_DIR)/, $(FONTS_OBJS)) \
+$(addprefix $(BASE_SOURCE_DIR)/, $(BASE_OBJS)) \
+$(addprefix $(MUPDF_SOURCE_DIR)/, $(MUPDF_OBJS)) \
+$(addprefix $(RASTER_SOURCE_DIR)/, $(RASTER_OBJS)) \
+$(addprefix $(STREAM_SOURCE_DIR)/, $(STREAM_OBJS)) \
+$(addprefix $(WORLD_SOURCE_DIR)/, $(WORLD_OBJS))
+
 PSP_EBOOT_TITLE = Bookr - Book Reader
 
 PSPSDK=$(shell psp-config --pspsdk-path)
 #USE_PSPSDK_LIBC=1
 include $(PSPSDK)/lib/build.mak
 
-EXTRA_TARGETS= \
+EXTRA_TARGETS += \
 	$(SOURCE_DIR)/bkmemcpy.o \
 	$(SOURCE_DIR)/res_uifont.c \
 	$(SOURCE_DIR)/res_txtfont.c \
