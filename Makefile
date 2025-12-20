@@ -4,37 +4,39 @@ PSP_EBOOT_ICON=data/icon0.png
 TARGET=bookr
 SOURCE_DIR=source
 TINYXML_SOURCE_DIR=tinyxml
+FITZ_SOURCE_DIR=source/fitz
+BOOKR_SOURCE_DIR=source/bookr
 
 OBJS:= \
-$(SOURCE_DIR)/bkpdf.o \
-$(SOURCE_DIR)/bklayer.o \
-$(SOURCE_DIR)/bkdocument.o \
-$(SOURCE_DIR)/bkmainmenu.o \
-$(SOURCE_DIR)/bkfilechooser.o \
-$(SOURCE_DIR)/bkpagechooser.o \
-$(SOURCE_DIR)/bkcolorschememanager.o\
-$(SOURCE_DIR)/bklogo.o \
-$(SOURCE_DIR)/bkuser.o \
+$(BOOKR_SOURCE_DIR)/bkpdf.o \
+$(BOOKR_SOURCE_DIR)/bklayer.o \
+$(BOOKR_SOURCE_DIR)/bkdocument.o \
+$(BOOKR_SOURCE_DIR)/bkmainmenu.o \
+$(BOOKR_SOURCE_DIR)/bkfilechooser.o \
+$(BOOKR_SOURCE_DIR)/bkpagechooser.o \
+$(BOOKR_SOURCE_DIR)/bkcolorschememanager.o\
+$(BOOKR_SOURCE_DIR)/bklogo.o \
+$(BOOKR_SOURCE_DIR)/bkuser.o \
 $(SOURCE_DIR)/bookr.o \
-$(SOURCE_DIR)/bkbookmark.o \
-$(SOURCE_DIR)/bkpopup.o \
-$(SOURCE_DIR)/bkcolorchooser.o \
-$(SOURCE_DIR)/bkfancytext.o \
-$(SOURCE_DIR)/bkplaintext.o \
-$(SOURCE_DIR)/fzrefcount.o \
-$(SOURCE_DIR)/fzinstreammem.o \
-$(SOURCE_DIR)/fzinstreamstd.o \
-$(SOURCE_DIR)/fzimage.o \
-$(SOURCE_DIR)/fzimagepng.o \
-$(SOURCE_DIR)/fztexture.o \
-$(SOURCE_DIR)/fzfont.o \
-$(SOURCE_DIR)/fzscreenpsp.o \
-$(SOURCE_DIR)/fzscreencommon.o \
+$(BOOKR_SOURCE_DIR)/bkbookmark.o \
+$(BOOKR_SOURCE_DIR)/bkpopup.o \
+$(BOOKR_SOURCE_DIR)/bkcolorchooser.o \
+$(BOOKR_SOURCE_DIR)/bkfancytext.o \
+$(BOOKR_SOURCE_DIR)/bkplaintext.o \
+$(FITZ_SOURCE_DIR)/fzrefcount.o \
+$(FITZ_SOURCE_DIR)/fzinstreammem.o \
+$(FITZ_SOURCE_DIR)/fzinstreamstd.o \
+$(FITZ_SOURCE_DIR)/fzimage.o \
+$(FITZ_SOURCE_DIR)/fzimagepng.o \
+$(FITZ_SOURCE_DIR)/fztexture.o \
+$(FITZ_SOURCE_DIR)/fzfont.o \
+$(FITZ_SOURCE_DIR)/fzscreenpsp.o \
+$(FITZ_SOURCE_DIR)/fzscreencommon.o \
 $(TINYXML_SOURCE_DIR)/tinystr.o \
 $(TINYXML_SOURCE_DIR)/tinyxmlerror.o \
 $(TINYXML_SOURCE_DIR)/tinyxml.o \
 $(TINYXML_SOURCE_DIR)/tinyxmlparser.o \
-$(SOURCE_DIR)/bkmemcpy.o \
+$(BOOKR_SOURCE_DIR)/bkmemcpy.o \
 $(SOURCE_DIR)/res_uifont.o \
 $(SOURCE_DIR)/res_txtfont.o \
 $(SOURCE_DIR)/res_uitex.o \
@@ -42,7 +44,7 @@ $(SOURCE_DIR)/res_logo.o \
 $(SOURCE_DIR)/res_uitex2.o 
 
 INCDIR =
-CFLAGS = -Imupdf/include -Iinclude -Iinclude/tinyxml -G0 -O2 -I$(shell psp-config --pspdev-path)/psp/include/freetype2
+CFLAGS = -Imupdf/include -Iinclude -Iinclude/tinyxml -G0 -O2 -I$(shell psp-config --pspdev-path)/psp/include/freetype2 -fomit-frame-pointer
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
 ASFLAGS = $(CFLAGS)
 
